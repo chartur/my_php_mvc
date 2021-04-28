@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><?= $gago ?>>/h1>
+    <div>
+        <?php foreach ($users as $user):  ?>
+            <div><?= $user['name'] ?></div>
+        <?php endforeach; ?>
+    </div>
 </body>
 </html>
