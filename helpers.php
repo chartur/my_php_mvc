@@ -10,7 +10,15 @@ if(!file_exists('view')) {
 if(!file_exists('config')) {
     function config($property) {
         $config = include "config.php";
-        return $config[$property];
+        $keys = explode(".", $property);
+        foreach ($keys as $key) {
+          if(isset($config[$key])) {
+            $config = $config[$key];
+            continue;
+          }
+          $config = null;
+        }
+        return $config;
     }
 }
 

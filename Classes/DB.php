@@ -32,6 +32,10 @@ class DB
         try {
             $config = config('DB_CONFIG');
 
+            if(!$config) {
+              return;
+            }
+            
             self::$connection = call_user_func_array('mysqli_connect', $config);
 
             if(mysqli_connect_errno()) {

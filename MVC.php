@@ -22,6 +22,7 @@ class MVC
     public function __construct()
     {
         $this->uri = $_SERVER['REQUEST_URI'];
+        $this->uri = explode("?", $this->uri)[0];
         $this->segments = explode('/', $this->uri);
         $this->segments = array_values(array_filter($this->segments)); // []
     }
@@ -49,6 +50,7 @@ class MVC
             case 1:
                 $this->hasController = true;
                 $this->hasAction = false;
+                break;
             default:
                 $this->hasController = true;
                 $this->hasAction = true;
